@@ -5,7 +5,7 @@ I'm a complete beginner in Rust so please don't judge ;-;
 
 Each day is its own workspace, please `cd` into the directory before using `cargo run --bin <PART>`.
 
-If you want to try my solutions, please put your own inputs at day*/input.txt
+If you want to try my solutions, please put your own inputs at `day*/input.txt`
 
 Licensed under the MIT license.
 
