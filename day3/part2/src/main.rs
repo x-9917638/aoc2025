@@ -32,7 +32,9 @@ fn main() {
             // We mutate index so that the next loop starts from the correct index.
             #[allow(clippy::mut_range_bound)]
             for i in index..bank.len() - last {
-                let candidate = bank[i..i + 1].parse::<u8>().expect("");
+                let candidate: u8 = bank[i..i + 1]
+                    .parse()
+                    .expect("");
                 if max < candidate {
                     max = candidate;
                     index = i;
