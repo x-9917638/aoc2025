@@ -1,9 +1,9 @@
 use std::fs;
 
-fn load_data() -> Vec<String> {
-    let contents = fs::read_to_string("./input.txt").expect("Meow");
+fn load_input() -> Vec<String> {
+    let input = fs::read_to_string("./input.txt").expect("Meow");
     Vec::from_iter(
-        contents
+        input
             .split("\n")
             .filter(|x| !x.is_empty())
             .map(|x| x.to_owned()),
@@ -11,11 +11,11 @@ fn load_data() -> Vec<String> {
 }
 
 fn main() {
-    let contents = load_data();
+    let input = load_input();
     let mut total = 0u128;
 
-    for mut bank in contents {
-        let mut container = String::new();
+    for mut bank in input {
+        let mut joltage = String::new();
 
         // Indicate the start index at which to start looking for the highest digit.
         let mut index = 0;
@@ -28,9 +28,8 @@ fn main() {
             // available digit that can be chosen such that we have enough
             // space to fufill all 12 digits of the final joltage.
 
-            // We do not need to mutate index while in the loop.
-            // We mutate index so that the next loop starts from
-            // the correct index.
+            // We do not need to mutate index as a range bound while in the loop.
+            // We mutate index so that the next loop starts from the correct index.
             #[allow(clippy::mut_range_bound)]
             for i in index..bank.len() - last {
                 let candidate = bank[i..i + 1].parse::<u8>().expect("");
@@ -40,9 +39,9 @@ fn main() {
                 }
             }
             // Here, we remove the chosen digit from the string and add it to our growing joltage
-            container.push(bank.remove(index));
+            joltage.push(bank.remove(index));
         }
-        total += container.parse::<u128>().expect("");
+        total += joltage.parse::<u128>().expect("");
     }
     println!("Total joltage: {total}");
 }
