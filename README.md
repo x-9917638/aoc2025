@@ -1,5 +1,5 @@
 # 2025 Advent of Code
-2025 AoC solutions, written in Rust!
+2025 AoC solutions, written in Rust using only the standard library :3
 
 I'm a complete beginner in Rust so please don't judge ;-;
 
