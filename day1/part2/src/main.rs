@@ -1,4 +1,6 @@
 use std::fs;
+
+// I have no idea why I decided to make the dial a struct.
 struct Dial {
     value: i32,
 }
@@ -14,7 +16,8 @@ impl Dial {
                 _ => unreachable!(),
             };
             let rotations: i32 = instruction[1..].parse().expect("Meow mrrp :3");
-
+            
+            // Yes, we are manually rotating by 1.
             for _ in 0..rotations {
                 if right {
                     if self.value == 99 {
@@ -30,10 +33,6 @@ impl Dial {
                 if self.value == 0 {
                     zeros += 1
                 }
-                // println!(
-                //     "The dial is rotated {instruction} to point at {}.",
-                //     self.value
-                // );
             }
         }
         zeros
