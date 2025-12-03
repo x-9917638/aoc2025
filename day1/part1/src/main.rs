@@ -48,10 +48,10 @@ fn main() {
             }
             _ => {}
         }
-        println!(
-            "The dial is rotated {instruction} to point at {}.",
-            dial.value
-        );
+        // println!(
+        //     "The dial is rotated {instruction} to point at {}.",
+        //     dial.value
+        // );
         if dial.value == 0 {
             password += 1;
         }

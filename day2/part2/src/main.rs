@@ -22,11 +22,11 @@ fn main() {
                 .map(|x| x.parse::<u128>().expect("Bleh :3")),
         );
 
-        for i in range[0]..range[1] + 1 {
-            let candidate = i.to_string();
+        for num in range[0]..range[1] + 1 {
+            let candidate = num.to_string();
             let len = candidate.len();
 
-            for j in 1..=(len / 2) {
+            'substr: for j in 1..=(len / 2) {
                 let substring = &candidate[..j];
                 let sub_len = substring.len();
 
@@ -34,18 +34,14 @@ fn main() {
                     continue;
                 }
 
-                let mut substrings = Vec::new();
-                for a in (sub_len..=len).step_by(sub_len) {
-                    substrings.push(&candidate[a.saturating_sub(sub_len)..a]);
+                let first = &candidate[0..sub_len];
+                for a in (sub_len * 2..=len).step_by(sub_len) {
+                    if &candidate[a - sub_len..a] != first {
+                        continue 'substr;
+                    }
                 }
-
-                // eprintln!("DEBUG - substrings={substrings:?}");
-                // sleep(Duration::from_millis(200));
-
-                if substrings.iter().all(|&x| x == substrings[0]) {
-                    total += i;
-                    break;
-                }
+                total += num;
+                break 'substr;
             }
         }
     }

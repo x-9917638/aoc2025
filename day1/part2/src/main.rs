@@ -30,10 +30,10 @@ impl Dial {
                 if self.value == 0 {
                     zeros += 1
                 }
-                println!(
-                    "The dial is rotated {instruction} to point at {}.",
-                    self.value
-                );
+                // println!(
+                //     "The dial is rotated {instruction} to point at {}.",
+                //     self.value
+                // );
             }
         }
         zeros
